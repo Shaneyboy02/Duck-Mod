@@ -1,18 +1,18 @@
-package me.shaneyboy02.ducky.client.models;// Made with Blockbench 4.1.1
-// Exported for Minecraft version 1.17 with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
+package me.shaneyboy02.ducky.client.models;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import me.shaneyboy02.ducky.DuckMod;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class AdultDuck<T extends Entity> extends EntityModel<T> {
 
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DuckMod.MODID, "textures/entity/adult_duck.png");
     private final ModelPart Mallard;
 
     public AdultDuck(ModelPart root) {
@@ -37,6 +37,10 @@ public class AdultDuck<T extends Entity> extends EntityModel<T> {
         PartDefinition RLeg = Mallard.addOrReplaceChild("RLeg", CubeListBuilder.create().texOffs(17, 0).addBox(-1.5F, 1.0F, -2.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.5F, 1.0F, 1.0F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
+    }
+
+    public static ResourceLocation getTexture() {
+        return TEXTURE;
     }
 
     @Override
